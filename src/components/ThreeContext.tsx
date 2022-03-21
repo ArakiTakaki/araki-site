@@ -2,7 +2,7 @@ import React, { createContext, FC, useCallback, useContext, useEffect, useMemo, 
 import * as THREE from 'three';
 
 interface ThreeContextProps {
-    getRenderer: () => THREE.WebGLRenderer,
+    getRenderer: () => THREE.WebGLRenderer | null,
     getScene: () => THREE.Scene,
 }
 
@@ -30,8 +30,8 @@ export const ThreeProvider: FC = ({ children }) => {
         return scene;
     }, [scene]);
 
-    const getRenderer = useCallback((): THREE.WebGLRenderer => {
-        if (threeRenderer == null) throw new Error('get renderer error');
+    const getRenderer = useCallback((): THREE.WebGLRenderer | null => {
+        if (threeRenderer == null) return null;
         return threeRenderer;
     }, [threeRenderer]);
 
