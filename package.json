@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
+    "@takumus/cubic-bezier": "^2.0.0",
+    "@tanstack/react-location": "^3.7.4",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -19,7 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@types/three": "^0.138.0"
+    "@types/three": "^0.138.0",
+    "simplex-noise": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
