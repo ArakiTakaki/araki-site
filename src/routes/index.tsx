@@ -7,8 +7,8 @@ const Index = () => {
       <h1>作品置き場</h1>
 
       <h2>3D系</h2>
-      <p><Link to="/products/1">秩序を持つ玉</Link></p>
-      <p><Link to="/products/2">込み上げる息吹</Link></p>
+      <p><Link to="/saihate/products/1">秩序を持つ玉</Link></p>
+      <p><Link to="/saihate/products/2">込み上げる息吹</Link></p>
 
       <h2>2D系</h2>
       <p>準備中</p>
