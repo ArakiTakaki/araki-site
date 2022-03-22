@@ -7,6 +7,7 @@ import { TransitionPointsController } from './components/controller/TransitionPo
 import { Earth } from './components/controller/Earth';
 
 const addProducts = (path: string, router: Route[], components: ReactNode[]): Route[] => {
+
   const routes = components.map((Component, index) => {
     return {
       path: '/' + (index + 1).toString(),

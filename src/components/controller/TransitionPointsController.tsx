@@ -22,7 +22,7 @@ export const TransitionPointsController: FC = () => {
         }, 2000);
     }, 10000);
     return (
-        <Starts target={verticies} />
+        <Starts target={verticies} ease={0.06} />
     )
 };
 
