@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
+import { FC, useEffect, useMemo, useRef } from 'react';
 import { useThreeContext } from '../ThreeContext';
 import * as THREE from 'three';
 import { loopAnimation } from '../../uses/useRequestAnimationFrame';
@@ -6,8 +6,18 @@ import { getGenerateCircle } from '../../utils/generateCanvas';
 
 export const Starts: FC<{
     target: number[];
+    ease?: number;
+    size?: number;
+    map?: THREE.Texture,
+    color?: number;
+    onAnimate?: (vol: number) => void;
 }> = ({ 
     target,
+    ease = 0.004,
+    size = 16,
+    map = getGenerateCircle(),
+    color,
+    onAnimate = () => {},
 }) => {
     const threeContext = useThreeContext();
     const scene = threeContext.getScene();
@@ -17,54 +27,83 @@ export const Starts: FC<{
     const refPostValue = useRef(target);
 
     useEffect(() => {
-        refPrevValue.current = refPostValue.current;
         refPostValue.current = target;
     }, [target]);
 
-    useEffect(() => {
-        if (renderer == null) return;
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight);
-        const resize = () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        };
-        const geometry = new THREE.BufferGeometry();
-        geometry.setAttribute('position', new THREE.Float32BufferAttribute(refPrevValue.current, 3));
-        // マテリアルを作成
-        const material = new THREE.PointsMaterial({
-            size: 16,
-            map: getGenerateCircle(),
+
+    const geometry = useMemo(() => {
+        return new THREE.BufferGeometry();
+    }, []);
+
+    const material = useMemo(() => {
+        return new THREE.PointsMaterial({
+            size,
+            map,
+            color,
             transparent: true,
             depthWrite: false,
             blending: THREE.AdditiveBlending,
         });
+    }, [size, map, color]);
+    const camera = useMemo(() => {
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight);
+        return camera;
+    }, []);
 
-        // 物体を作成
+    useEffect(() => {
+        const resize = () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        };
+        window.addEventListener('resize', resize);
+        return () => {
+            window.removeEventListener('resize', resize);
+        }
+    }, [camera]);
+
+    const mesh = useMemo(() => {
         const mesh = new THREE.Points(geometry, material);
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(refPrevValue.current, 3));
+        return mesh;
+    }, [geometry, material]);
+
+    useEffect(() => {
         scene.add(mesh);
         scene.add(camera);
+        return () => {
+            scene.remove(mesh);
+            scene.remove(camera);
+        }
+    }, [mesh, camera, scene]);
 
+    // animation loop
+    useEffect(() => {
         const lookatPosition = new THREE.Vector3(0, 0, 0);
         camera.lookAt(lookatPosition);
+        if (renderer == null) return;
 
+        camera.position.z = 300;
         const cancel = loopAnimation((time) => {
             camera.position.x = Math.sin(time / 6000.0) * 300;
             camera.position.z = Math.cos(time / 6000.0) * 300;
 
-            // const deltaParsent = time / 10000;
-            for (let i = 0; i < refPrevValue.current.length; i++ ) refPrevValue.current[i] += (-refPrevValue.current[i] + refPostValue.current[i]) * 0.008;
+            onAnimate(time);
+            // TODO easing式の展開
+            if (ease <= 1) {
+                for (let i = 0; i < refPrevValue.current.length; i++ ) {
+                    refPrevValue.current[i] += (-refPrevValue.current[i] + refPostValue.current[i]) * ease;
+                }
+            }
+
             geometry.setAttribute('position', new THREE.Float32BufferAttribute(refPrevValue.current, 3));
             camera.lookAt(lookatPosition);
+
             renderer.render(scene, camera);
         });
-        window.addEventListener('resize', resize);
 
         return () => {
-            scene.remove(mesh);
-            scene.remove(camera);
             cancel();
-            window.removeEventListener('resize', resize);
         };
-    }, [scene, renderer]);
+    }, [scene, renderer, ease, mesh, camera, geometry]);
     return null;
 }

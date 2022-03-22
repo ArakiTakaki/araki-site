@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useInterval } from '../../uses/useInterval';
 import { call } from '../../utils/functions';
 import { Starts } from '../effects/Stars';
@@ -16,11 +16,11 @@ export const TransitionPointsController: FC = () => {
     const [verticies, setVerticies] = useState(createHourglassVerticies(LENGTH));
 
     useInterval(() => {
-        setVerticies(createRandomVerticies(LENGTH))
+        setVerticies(createRandomVerticies(LENGTH));
         setTimeout(() =>{ 
-            setVerticies(TIMELINE[Math.floor(TIMELINE.length * Math.random())])
+            setVerticies(TIMELINE[Math.floor(TIMELINE.length * Math.random())]());
         }, 2000);
-    }, 7000);
+    }, 10000);
     return (
         <Starts target={verticies} />
     )

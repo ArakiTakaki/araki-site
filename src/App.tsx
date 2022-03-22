@@ -3,8 +3,8 @@ import { Outlet, Router, Route } from '@tanstack/react-location';
 import { ThreeProvider } from './components/ThreeContext';
 import { routes, location } from './routes';
 import './App.css';
-import { Starts } from './components/effects/Stars';
 import { TransitionPointsController } from './components/controller/TransitionPointsController';
+import { Earth } from './components/controller/Earth';
 
 const addProducts = (path: string, router: Route[], components: ReactNode[]): Route[] => {
   const routes = components.map((Component, index) => {
@@ -23,7 +23,8 @@ const addProducts = (path: string, router: Route[], components: ReactNode[]): Ro
 };
 
 const productComponents: ReactNode[] = ([
-  <TransitionPointsController />
+  <TransitionPointsController />,
+  <Earth />
 ]).map((children) => <ThreeProvider>{children}</ThreeProvider>);
 
 function App() {
