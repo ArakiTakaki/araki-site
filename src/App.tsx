@@ -7,7 +7,6 @@ import { TransitionPointsController } from './components/controller/TransitionPo
 import { Earth } from './components/controller/Earth';
 
 const addProducts = (path: string, router: Route[], components: ReactNode[]): Route[] => {
-
   const routes = components.map((Component, index) => {
     return {
       path: '/' + (index + 1).toString(),
@@ -22,6 +21,17 @@ const addProducts = (path: string, router: Route[], components: ReactNode[]): Ro
     },
   ];
 };
+const productionRegister = (router: Route[]): Route[] => {
+  if (process.env.NODE_ENV === 'production') {
+    return [
+      {
+        path: 'saihate',
+        children: router,
+      }
+    ];
+  }
+  return router;
+}
 
 const productComponents: ReactNode[] = ([
   <TransitionPointsController />,
@@ -31,7 +41,7 @@ const productComponents: ReactNode[] = ([
 function App() {
   return (
     <div className="App">
-      <Router routes={addProducts('/products', routes, productComponents)} location={location}>
+      <Router routes={productionRegister(addProducts('/products', routes, productComponents))} location={location}>
         <Outlet />
       </Router>
     </div>
