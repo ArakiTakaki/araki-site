@@ -11,6 +11,8 @@ const Index = () => {
       <p><Link to="/saihate/products/2">込み上げる息吹</Link></p>
 
       <h2>2D系</h2>
+      <p><Link to="/saihate/products/3">マトリックス風のマテリックス</Link></p>
+
       <p>準備中</p>
     </div>
   )

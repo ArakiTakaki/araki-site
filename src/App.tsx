@@ -5,8 +5,9 @@ import { routes, location } from './routes';
 import './App.css';
 import { TransitionPointsController } from './components/controller/TransitionPointsController';
 import { Earth } from './components/controller/Earth';
+import { MatrixMovie } from './components/controller/MatrixMovie';
 
-const addProducts = (path: string, router: Route[], components: ReactNode[]): Route[] => {
+const addRouters = (path: string, router: Route[], components: ReactNode[]): Route[] => {
   const routes = components.map((Component, index) => {
     return {
       path: '/' + (index + 1).toString(),
@@ -33,15 +34,22 @@ const productionRegister = (router: Route[]): Route[] => {
   return router;
 }
 
-const productComponents: ReactNode[] = ([
+const productComponents: ReactNode[] = [
+  ...([
   <TransitionPointsController />,
-  <Earth />
-]).map((children) => <ThreeProvider>{children}</ThreeProvider>);
+  <Earth />,
+]).map((children) => <ThreeProvider>{children}</ThreeProvider>),
+  <MatrixMovie />,
+];
+
+  
+const registerProduct = (routes: Route[]) => addRouters('/products', routes, productComponents);
 
 function App() {
+
   return (
     <div className="App">
-      <Router routes={productionRegister(addProducts('/products', routes, productComponents))} location={location}>
+      <Router routes={productionRegister(registerProduct(routes))} location={location}>
         <Outlet />
       </Router>
     </div>

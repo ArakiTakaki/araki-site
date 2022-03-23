@@ -33,10 +33,13 @@ export const createCurlNoise = (noise: (vlaues: number[]) => number) => {
             });
 
             const result = a.reduce((prev, current, index) => {
-                if (index === 0) return  noise(current);
-                return prev - noise(current)
+                if (index === 0) return noise(current);
+                return prev - noise([...current].reverse())
             }, 0);
             return calcEps(result, noiseDiff);
+        }).map((val, index) => {
+            if (index % 2 === 0) return -val;
+            return val;
         });
     };
 }
@@ -69,3 +72,30 @@ export const randomXorShift = (seed: number = 88675123) => {
         return min + (r % (max + 1 - min));
     };
 };
+
+/**
+ * 0-1に変換する
+ * @param t 対象数値
+ * @param min 最小数値
+ * @param max 最大数値
+ * @returns 0-1
+ * @example
+ * ```
+ * normalize(2, 1, 3) // => 0.5
+ * ```
+ */
+export const normalize = (t: number, min: number, max: number): number => (t - min) / (max - min);
+
+
+/**
+ * @param x 導出元数値
+ * @param min 最小値
+ * @param max 最大値
+ * @returns 最小値と最大値の間を返却する
+ * @example (1.1, 0, 1) => 1
+ * @example (-0.1, 0, 1) => 0
+ * @example (1.1, 1, 0) => 1
+ * @example (-0.1, 1, 0) => 0
+ */
+export const minMax = (x: number, range1: number, range2: number): number =>
+  Math.min(Math.max(range2, range1), Math.max(Math.min(range2, range1), x));
