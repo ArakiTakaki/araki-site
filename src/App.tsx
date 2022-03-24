@@ -34,11 +34,11 @@ const productionRegister = (router: Route[]): Route[] => {
   return router;
 }
 
+  
+
 const productComponents: ReactNode[] = [
-  ...([
-  <TransitionPointsController />,
-  <Earth />,
-]).map((children) => <ThreeProvider>{children}</ThreeProvider>),
+  <ThreeProvider><TransitionPointsController /></ThreeProvider>,
+  <ThreeProvider><Earth /></ThreeProvider>,
   <MatrixMovie />,
 ];
 
