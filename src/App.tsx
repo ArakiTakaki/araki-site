@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import { Outlet, Router, Route } from '@tanstack/react-location';
 import { ThreeProvider } from './components/ThreeContext';
 import { routes, location } from './routes';
-import './App.css';
 import { TransitionPointsController } from './components/controller/TransitionPointsController';
 import { Earth } from './components/controller/Earth';
 import { MatrixMovie } from './components/controller/MatrixMovie';
