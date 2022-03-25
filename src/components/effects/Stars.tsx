@@ -3,6 +3,7 @@ import { useThreeContext } from '../ThreeContext';
 import * as THREE from 'three';
 import { loopAnimation } from '../../uses/useRequestAnimationFrame';
 import { getGenerateCircle } from '../../utils/generateCanvas';
+import { useAddObject } from '../../uses/useAddObject';
 
 export const Starts: FC<{
     target: number[];
@@ -10,15 +11,20 @@ export const Starts: FC<{
     size?: number;
     map?: THREE.Texture,
     color?: number;
+    backgroundColor?: number;
     onAnimate?: (vol: number) => void;
+    blending?: THREE.Blending
 }> = ({ 
     target,
     ease = 0.004,
     size = 16,
     map = getGenerateCircle(),
     color,
+    backgroundColor,
     onAnimate = () => {},
+    blending = THREE.AdditiveBlending
 }) => {
+    
     const threeContext = useThreeContext();
     const scene = threeContext.getScene();
     const renderer = threeContext.getRenderer();
@@ -42,9 +48,9 @@ export const Starts: FC<{
             color,
             transparent: true,
             depthWrite: false,
-            blending: THREE.AdditiveBlending,
+            blending: blending,
         });
-    }, [size, map, color]);
+    }, [size, map, color, blending]);
     const camera = useMemo(() => {
         const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight);
         return camera;
@@ -67,14 +73,17 @@ export const Starts: FC<{
         return mesh;
     }, [geometry, material]);
 
+
+    useAddObject(scene, mesh);
+    useAddObject(scene, camera);
+
     useEffect(() => {
-        scene.add(mesh);
-        scene.add(camera);
+        if (backgroundColor == null) return;
+        scene.background = new THREE.Color(backgroundColor);
         return () => {
-            scene.remove(mesh);
-            scene.remove(camera);
+            scene.background = null;
         }
-    }, [mesh, camera, scene]);
+    }, [scene, backgroundColor]);
 
     // animation loop
     useEffect(() => {
@@ -104,6 +113,6 @@ export const Starts: FC<{
         return () => {
             cancel();
         };
-    }, [scene, renderer, ease, mesh, camera, geometry]);
+    }, [scene, renderer, ease, mesh, camera, geometry, onAnimate]);
     return null;
 }

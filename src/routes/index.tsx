@@ -11,6 +11,7 @@ const Index = () => {
       <h2>3D系</h2>
       <p><Link to={getUrl('products', '1')}>秩序を持つ玉</Link></p>
       <p><Link to={getUrl('products', '2')}>込み上げる息吹</Link></p>
+      <p><Link to={getUrl('products', '4')}>泡</Link></p>
 
       <h2>2D系</h2>
       <p><Link to={getUrl('products', '3')}>マトリックス風のマテリックス</Link></p>

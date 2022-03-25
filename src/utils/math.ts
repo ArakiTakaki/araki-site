@@ -99,3 +99,24 @@ export const normalize = (t: number, min: number, max: number): number => (t - m
  */
 export const minMax = (x: number, range1: number, range2: number): number =>
   Math.min(Math.max(range2, range1), Math.max(Math.min(range2, range1), x));
+
+/**
+ * between
+ * @param min 最小値
+ * @param max 最大値
+ * @param a ターゲットの値
+ * @param offset 外部許可
+ * @returns
+ */
+export const between = (min: number, max: number, a: number, offset: number = 0): boolean => a >= min - offset && a <= max + offset;
+
+// callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any
+
+type MapFunction<T, U> = (value: T, index: number, array: T[]) => U;
+/**
+ * map関数をIndexによる分割をし、順次実行する。（例　x y z ごとのポジションを変更する）
+ */
+export const editSplitArrayMap = <T, U>(...functions: MapFunction<T, U>[]) => (value: T, index: number, array: T[]) => {
+    return functions[index % functions.length](value, Math.floor(index / functions.length), array);
+};
+
