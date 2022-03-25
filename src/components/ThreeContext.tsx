@@ -26,6 +26,7 @@ export const ThreeProvider: FC = ({ children }) => {
     const scene = useMemo(() => {
         return new THREE.Scene();
     }, []);
+
     const getScene = useCallback(() => {
         return scene;
     }, [scene]);
@@ -44,7 +45,10 @@ export const ThreeProvider: FC = ({ children }) => {
 
     useEffect(() => {
         if (elCanvas.current == null) throw new Error('');
-        const renderer = new THREE.WebGLRenderer({ canvas: elCanvas.current });
+        const renderer = new THREE.WebGLRenderer({
+            canvas: elCanvas.current,
+            antialias: true,
+        });
         setThreeRenderer(renderer);
         return () => {
             setThreeRenderer(null);

@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import bezier from '@takumus/cubic-bezier';
-import { mix } from './math';
-import { call } from './functions';
+import { between, mix, normalize } from './math';
 import { hsl2rgb } from './color';
+import { EaseInQuad, EaseOutQuad } from './bezier';
 
 export function getGenerateCircle() {
     //canvasで小さい丸の作成
@@ -62,4 +62,62 @@ export function getGenerateCircle2() {
     const texture = new THREE.Texture(canvas);
     texture.needsUpdate = true;
     return texture;
+}
+
+export function getBubleTexture({
+    isDebug = true,
+} = {}) {
+    //canvasで小さい丸の作成
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+
+    const context = canvas.getContext('2d');
+    if (context == null) throw new Error('');
+
+    const gradient = context.createRadialGradient(canvas.width / 2, canvas.height / 2, 0, canvas.width / 2, canvas.height / 2, canvas.width / 2);
+
+    const createColor = (x: number, hsl = 50) => {
+        const { r, g, b } = hsl2rgb(hsl, 50, mix(0, 30, x));
+        return [r, g, b];
+    }
+    
+    for (let step = 0; step < 1.0; step += 0.01) {
+        if (between(0, 0.8, step)) {
+            const t = EaseInQuad(normalize(step, 0, 0.8));
+            
+            const [r, g, b] = createColor(mix(0, 0.8, t));
+            gradient.addColorStop(step, createRgb(r, g, b));
+        }
+
+        if (between(0.8, 0.99, step)) {
+            const t = EaseInQuad(normalize(step, 0.8, 0.99));
+            const [r, g, b] = createColor(mix(0.8, 0, t));
+            gradient.addColorStop(step, createRgb(r, g, b));
+        }
+    }
+
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    if (isDebug) debugCanvas(canvas);
+    const texture = new THREE.Texture(canvas);
+
+    texture.premultiplyAlpha = true;
+    texture.needsUpdate = true;
+
+    return texture;
+}
+
+
+function debugCanvas (canvas: HTMLCanvasElement) {
+    const elDebugWrap = document.createElement('div');
+    elDebugWrap.style.position = 'fixed';
+    elDebugWrap.style.top = '0px';
+    elDebugWrap.style.right = '0px';
+    canvas.style.width = '100%'
+    canvas.style.height = '100%'
+    elDebugWrap.style.width = '20vh';
+    elDebugWrap.style.height = '20vh';
+    elDebugWrap.appendChild(canvas);
+    document.body.appendChild(elDebugWrap);
 }
