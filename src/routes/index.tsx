@@ -8,15 +8,13 @@ const Index = () => {
     <div>
       <h1>作品置き場</h1>
 
-      <h2>3D系</h2>
-      <p><Link to={getUrl('products', '1')}>秩序を持つ玉</Link></p>
-      <p><Link to={getUrl('products', '2')}>込み上げる息吹</Link></p>
-      <p><Link to={getUrl('products', '4')}>泡</Link></p>
+      <h2 className=' text-xl'>3D系</h2>
+      <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '1')}>・秩序を持つ玉</Link></p>
+      <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '2')}>・込み上げる息吹</Link></p>
+      <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '4')}>・泡</Link></p>
 
-      <h2>2D系</h2>
-      <p><Link to={getUrl('products', '3')}>マトリックス風のマテリックス</Link></p>
-
-      <p>準備中</p>
+      <h2 className=' text-xl'>2D系</h2>
+      <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '3')}>マトリックス風のマテリックス</Link></p>
     </div>
   )
 }
