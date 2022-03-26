@@ -64,7 +64,7 @@ export function getGenerateCircle2() {
     return texture;
 }
 
-export function getBubleTexture({
+export function getSquareFlyTexture({
     isDebug = true,
 } = {}) {
     //canvasで小さい丸の作成

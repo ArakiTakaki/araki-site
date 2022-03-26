@@ -5,7 +5,7 @@ import { routes, location } from './routes';
 import { TransitionPointsController } from './components/controller/TransitionPointsController';
 import { Earth } from './components/controller/Earth';
 import { MatrixMovie } from './components/controller/MatrixMovie';
-import { Buble } from './components/controller/Buble';
+import { SquareFly } from './components/controller/SquareFly';
 
 const addRouters = (path: string, router: Route[], components: ReactNode[]): Route[] => {
   const routes = components.map((Component, index) => {
@@ -38,7 +38,7 @@ const productComponents: ReactNode[] = [
   <ThreeProvider><TransitionPointsController /></ThreeProvider>,
   <ThreeProvider><Earth /></ThreeProvider>,
   <MatrixMovie />,
-  <ThreeProvider><Buble /></ThreeProvider>,
+  <ThreeProvider><SquareFly /></ThreeProvider>,
 ];
 
   

@@ -7,48 +7,10 @@ import { useRender } from '../../uses/three/useRender';
 import { useAddObject } from '../../uses/useAddObject';
 import { useRequestAnimationFrame } from '../../uses/useRequestAnimationFrame';
 import { useThreeContext } from '../ThreeContext';
-import { useShader } from '../../uses/three/useShader';
 import { useUpdateVerticies } from '../../uses/three/useUpdateVerticies';
 
 // ref https://www.wpc-store.com/f/feature/detail/?p=2223
-
-const vertexShader = `uniform float u_time;
-uniform vec2 u_resolution;
-varying vec2 vUv;
-
-void main()	{
-    vec3 p = position;
-    vUv = uv - .5;
-    vUv += .5;
-    gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(p, 1.0);
-}
-`;
-
-const fragmentShader = `uniform float u_time;
-varying vec2 vUv;
-uniform vec2 u_resolution;
-
-#include <fog_pars_fragment>
-void main()	{
-    vec3 color = vec3(0.0);
-
-    vec2 p = (vUv - vec2(0.5)) * 2.0;
-    
-    if (length(p) < 1.0) {
-        if (length(p) > 0.98) {
-            color.rgb = vec3(1.0);
-        } else {
-            color.rgb = 1.0 - vec3(length(p));
-        }
-    }
-
-    gl_FragColor = vec4(color, 1.0);
-
-    #include <fog_fragment>
-}
-`;
-
-export const Buble: FC = () => {
+export const SquareFly: FC = () => {
     const { getScene } = useThreeContext();
     const scene = getScene();
     const camera = useCamera({ z: -400 })
