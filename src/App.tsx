@@ -34,8 +34,6 @@ const productionRegister = (router: Route[]): Route[] => {
   return router;
 }
 
-  
-
 const productComponents: ReactNode[] = [
   <ThreeProvider><TransitionPointsController /></ThreeProvider>,
   <ThreeProvider><Earth /></ThreeProvider>,
