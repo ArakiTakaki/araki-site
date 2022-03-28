@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { useInterval } from '../../uses/useInterval';
 import { createCurlNoise, parseSimplecNoise } from '../../utils/math';
 import { Starts } from '../effects/Stars';
 import Simplex from 'simplex-noise';

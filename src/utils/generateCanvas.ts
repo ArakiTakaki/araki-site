@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import bezier from '@takumus/cubic-bezier';
 import { between, mix, normalize } from './math';
 import { hsl2rgb } from './color';
-import { EaseInQuad, EaseOutQuad } from './bezier';
+import { EaseInQuad } from './bezier';
 
 export function getGenerateCircle() {
     //canvasで小さい丸の作成
