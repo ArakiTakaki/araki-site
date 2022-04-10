@@ -12,6 +12,7 @@ const Index = () => {
       <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '1')}>・秩序を持つ玉</Link></p>
       <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '2')}>・込み上げる息吹</Link></p>
       <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '4')}>・飛翔する三角</Link></p>
+      <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '8')}>・ノイズ</Link></p>
 
       <h2 className=' text-xl'>2D系</h2>
       <p className='ml-4 text-blue-500 underline'><Link to={getUrl('products', '3')}>マトリックス風のマテリックス</Link></p>

@@ -8,6 +8,8 @@ import { MatrixMovie } from './components/controller/MatrixMovie';
 import { SquareFly } from './components/controller/SquareFly';
 import { Buble } from './components/controller/Buble';
 import { Buble2 } from './components/controller/Buble2';
+import { OutMaterial } from './components/controller/OutMaterial';
+import { Shader1 } from './components/controller/Shader1';
 
 const addRouters = (path: string, router: Route[], components: ReactNode[]): Route[] => {
   const routes = components.map((Component, index) => {
@@ -43,6 +45,8 @@ const productComponents: ReactNode[] = [
   <ThreeProvider><SquareFly /></ThreeProvider>,
   <ThreeProvider><Buble /></ThreeProvider>,
   <ThreeProvider><Buble2 /></ThreeProvider>,
+  <ThreeProvider><OutMaterial /></ThreeProvider>,
+  <ThreeProvider><Shader1 /></ThreeProvider>,
 ];
 
   

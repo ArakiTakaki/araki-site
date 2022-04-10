@@ -76,7 +76,8 @@ mat2 rotate2d(float _angle){
 }
 
 void main()	{
-    vec3 color = vec3(0.0);
+    vec3 color;
+    color = vec3(0.0);
     vec2 p = (vUv - vec2(0.5)) * 2.0;
     float t = sin(u_time / 1000.0) * 1.0 + 300.0;
 
@@ -93,7 +94,8 @@ void main()	{
             3.0,
             0.05
         );
-        color.b += blue_line * 0.5;
+        color.b += (blue_line * 0.5);
+        // color.b = 1.0;
 
         float green_line = createSquare(
             (p * rotate2d(45.0 * DEG * sin(t * i))) - vec2(-1., -2.0 + i - 0.1),
