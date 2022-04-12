@@ -10,6 +10,7 @@ import { Buble } from './components/controller/Buble';
 import { Buble2 } from './components/controller/Buble2';
 import { OutMaterial } from './components/controller/OutMaterial';
 import { Shader1 } from './components/controller/Shader1';
+import { Shader2 } from './components/controller/Shader2';
 
 const addRouters = (path: string, router: Route[], components: ReactNode[]): Route[] => {
   const routes = components.map((Component, index) => {
@@ -47,6 +48,7 @@ const productComponents: ReactNode[] = [
   <ThreeProvider><Buble2 /></ThreeProvider>,
   <ThreeProvider><OutMaterial /></ThreeProvider>,
   <ThreeProvider><Shader1 /></ThreeProvider>,
+  <ThreeProvider><Shader2 /></ThreeProvider>,
 ];
 
   
