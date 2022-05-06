@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import * as THREE from 'three';
 import { useCamera } from '../../uses/three/useCamera';
 import { useDirectionalLight } from '../../uses/three/useLight';
