@@ -27,7 +27,7 @@ export const Navigation: FC<{ className?: string }> = ({ className }) => {
                             </li>
                         );
                         return (
-                            <li>
+                            <li key={index}>
                                 <Link to={getUrl(...value.path)}>
                                     {value.icon && <BaseIcon name={value.icon} />}
                                     <span>
