@@ -111,12 +111,12 @@ void main()	{
 `;
 
 export const Buble2: FC = () => {
-    const { getScene } = useThreeContext();
-    const scene = getScene();
+    const { scene } = useThreeContext();
     const camera = useCamera({ z: -400 })
     const render = useRender(camera);
 
     useEffect(() => {
+        if (scene == null) return;
         const light = new THREE.AmbientLight(0x222200, 1.0);
         scene.add(light);
 

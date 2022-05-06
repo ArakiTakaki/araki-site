@@ -25,9 +25,7 @@ export const Starts: FC<{
     blending = THREE.AdditiveBlending
 }) => {
     
-    const threeContext = useThreeContext();
-    const scene = threeContext.getScene();
-    const renderer = threeContext.getRenderer();
+    const { scene, renderer } = useThreeContext();
 
     const refPrevValue = useRef(target);
     const refPostValue = useRef(target);
@@ -79,6 +77,7 @@ export const Starts: FC<{
 
     useEffect(() => {
         if (backgroundColor == null) return;
+        if (scene == null) return;
         scene.background = new THREE.Color(backgroundColor);
         return () => {
             scene.background = null;
@@ -89,7 +88,7 @@ export const Starts: FC<{
     useEffect(() => {
         const lookatPosition = new THREE.Vector3(0, 0, 0);
         camera.lookAt(lookatPosition);
-        if (renderer == null) return;
+        if (renderer == null || scene == null) return;
 
         camera.position.z = 300;
         const cancel = loopAnimation((time) => {

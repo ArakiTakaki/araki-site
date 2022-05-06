@@ -7,19 +7,16 @@ import { useAddObject } from '../../uses/useAddObject';
 import { useRequestAnimationFrame } from '../../uses/useRequestAnimationFrame';
 import { useThreeContext } from '../ThreeContext';
 import { useShader } from '../../uses/three/useShader';
-import { deserialize, fbm, hsv2rgb, random, rotate2d, simplex2d, simplex2dFractal } from '../../utils/glsl';
+import { deserialize, simplex2d } from '../../utils/glsl';
 
 // ref https://www.wpc-store.com/f/feature/detail/?p=2223
-const vertexShader = `
-varying vec2 vUv;
-
+const vertexShader = `varying vec2 vUv;
 void main() {
     vUv = uv - .5;
     vUv += .5;
     vUv *= 2.0;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0 );
 }
-
 `;
 
 const fragmentShader = `precision mediump float;
@@ -64,12 +61,12 @@ void main() {
 `;
 
 export const Shader2: FC = () => {
-    const { getScene } = useThreeContext();
-    const scene = getScene();
+    const { scene  } = useThreeContext();
     const camera = useCamera({ z: -400 })
     const render = useRender(camera);
 
     useEffect(() => {
+        if (scene == null) return;
         const light = new THREE.AmbientLight(0x222200, 1.0);
         scene.add(light);
 
@@ -123,5 +120,5 @@ export const Shader2: FC = () => {
         render();
     });
 
-    return <></>;
+    return null;
 };

@@ -4,8 +4,7 @@ import * as THREE from 'three';
 import { useAddObject } from '../../uses/useAddObject';
 
 export const Porigon: FC<{}> = () => {
-    const threeContext = useThreeContext();
-    const scene = threeContext.getScene();
+    const { scene } = useThreeContext();
     const geometry = useMemo(() => new THREE.DodecahedronGeometry(30, 3), []);
     const material = useMemo(() => new THREE.MeshStandardMaterial({
         roughness: 0.46,

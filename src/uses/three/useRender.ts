@@ -3,11 +3,10 @@ import * as THREE from 'three';
 import { useCallback } from "react";
 
 export const useRender = (camera: THREE.Camera) => {
-    const { getScene, getRenderer } = useThreeContext();
-    const scene = getScene();
-    const renderer = getRenderer();
+    const { scene, renderer } = useThreeContext();
+
     return useCallback(() => {
-        if (renderer == null) return;
+        if (renderer == null || scene == null) return;
         renderer.render(scene, camera);
     }, [camera, renderer, scene]);
 };

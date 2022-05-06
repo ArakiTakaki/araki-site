@@ -2,17 +2,13 @@ import React, { createContext, FC, useCallback, useContext, useEffect, useMemo, 
 import * as THREE from 'three';
 
 interface ThreeContextProps {
-    getRenderer: () => THREE.WebGLRenderer | null,
-    getScene: () => THREE.Scene,
+    renderer: THREE.WebGLRenderer | null,
+    scene: THREE.Scene | null,
 }
 
 const initialContext: ThreeContextProps = {
-    getRenderer: () => {
-        throw new Error('');
-    },
-    getScene: () => {
-        throw new Error('');
-    },
+    renderer: null,
+    scene: null,
 };
 
 const ThreeContext = createContext<ThreeContextProps>(initialContext);
@@ -26,15 +22,6 @@ export const ThreeProvider: FC = ({ children }) => {
     const scene = useMemo(() => {
         return new THREE.Scene();
     }, []);
-
-    const getScene = useCallback(() => {
-        return scene;
-    }, [scene]);
-
-    const getRenderer = useCallback((): THREE.WebGLRenderer | null => {
-        if (threeRenderer == null) return null;
-        return threeRenderer;
-    }, [threeRenderer]);
 
     useEffect(() => {
         if (threeRenderer == null) return;
@@ -58,8 +45,8 @@ export const ThreeProvider: FC = ({ children }) => {
     return (
         <ThreeContext.Provider
             value={{
-                getRenderer,
-                getScene,
+                renderer: threeRenderer,
+                scene,
             }}
         >
             <canvas ref={elCanvas} />

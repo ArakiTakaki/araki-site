@@ -13,7 +13,7 @@
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
-    "daisyui": "^2.11.1",
+    "daisyui": "^2.14.3",
     "p5": "^1.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
