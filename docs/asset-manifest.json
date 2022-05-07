@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/saihate/static/css/main.d0a5510d.css",
-    "main.js": "/saihate/static/js/main.6aa6acda.js",
+    "main.js": "/saihate/static/js/main.38fd6f5f.js",
     "static/js/522.204dc0a2.chunk.js": "/saihate/static/js/522.204dc0a2.chunk.js",
     "static/js/442.92595e47.chunk.js": "/saihate/static/js/442.92595e47.chunk.js",
     "static/js/797.f13c3ce5.chunk.js": "/saihate/static/js/797.f13c3ce5.chunk.js",
@@ -20,7 +20,7 @@
     "static/js/586.2cf56e27.chunk.js": "/saihate/static/js/586.2cf56e27.chunk.js",
     "index.html": "/saihate/index.html",
     "main.d0a5510d.css.map": "/saihate/static/css/main.d0a5510d.css.map",
-    "main.6aa6acda.js.map": "/saihate/static/js/main.6aa6acda.js.map",
+    "main.38fd6f5f.js.map": "/saihate/static/js/main.38fd6f5f.js.map",
     "522.204dc0a2.chunk.js.map": "/saihate/static/js/522.204dc0a2.chunk.js.map",
     "442.92595e47.chunk.js.map": "/saihate/static/js/442.92595e47.chunk.js.map",
     "797.f13c3ce5.chunk.js.map": "/saihate/static/js/797.f13c3ce5.chunk.js.map",
@@ -40,6 +40,6 @@
   },
   "entrypoints": [
     "static/css/main.d0a5510d.css",
-    "static/js/main.6aa6acda.js"
+    "static/js/main.38fd6f5f.js"
   ]
 }
