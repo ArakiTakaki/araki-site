@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/522.204dc0a2.chunk.js","mappings":"iIAWA,UARsB,WAClB,OACI","sources":["pages/Abouts.tsx"],"sourcesContent":["import React, {FC} from 'react';\nimport Pendding from './Pendding';\n\nconst AboutPage: FC = () => {\n    return (\n        <div>\n            about\n        </div>\n    );\n};\n\nexport default AboutPage;\n"],"names":[],"sourceRoot":""}
