@@ -2,7 +2,7 @@
   "name": "mysite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "/saihate/",
   "dependencies": {
     "@takumus/cubic-bezier": "^2.0.0",
     "@tanstack/react-location": "^3.7.4",
@@ -13,7 +13,9 @@
     "@types/node": "^16.11.26",
     "@types/react": "^17.0.41",
     "@types/react-dom": "^17.0.14",
+    "clsx": "^1.1.1",
     "daisyui": "^2.14.3",
+    "marked": "^4.0.15",
     "p5": "^1.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -23,6 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@types/marked": "^4.0.3",
     "@types/p5": "^1.4.1",
     "@types/path-browserify": "^1.0.0",
     "@types/three": "^0.138.0",

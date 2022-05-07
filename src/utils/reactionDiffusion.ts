@@ -86,12 +86,12 @@ export const reactionDeffusion = (width: number, height: number) => {
       v[y_0 + i].fill(0.25, x_0, x_0 + SQUARE_SIZE);
     }
 
-    // for (let i = 0; i < height; i++) {
-    //   for (let j = 0; j < width; j++) {
-    //     u[i][j] += Math.random() * 0.09;
-    //     v[i][j] += Math.random() * 0.09;
-    //   }
-    // }
+    for (let i = 0; i < height; i++) {
+      for (let j = 0; j < width; j++) {
+        u[i][j] += Math.random() * 0.12;
+        v[i][j] += Math.random() * 0.07;
+      }
+    }
   }
 
   initalize();
