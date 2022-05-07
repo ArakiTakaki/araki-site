@@ -19,6 +19,7 @@ type Navigation = Routing | Divider | Header;
 export const NAVIGATION: Navigation[] = [
     { name: 'item', path: ['/'], text: 'TOP', icon: 'HOME' },
     { name: 'item', path: ['about'], text: 'ABOUT', icon: 'INFORMATION' },
+    { name: 'item', path: ['todo'], text: 'TODO', icon: 'CHECK' },
     { name: 'divider' },
     { name: 'header', text: '3D' },
     { name: 'item', path: ['products', '1'], text: '秩序を持つ玉' },
