@@ -1,7 +1,6 @@
 import React from 'react';
-import { Route, ReactLocation, Link } from '@tanstack/react-location';
+import { Route, ReactLocation, Link, createHashHistory } from '@tanstack/react-location';
 import Pendding from '../pages/Pendding';
-import { productionRegister } from './basePath';
 import { addProductRouters } from './productRouters';
 
 const Index = () => {
@@ -12,7 +11,10 @@ const Index = () => {
   )
 }
 
-export const location = new ReactLocation();
+const hashHistory = createHashHistory();
+export const location = new ReactLocation({
+  history: hashHistory,
+});
 const prneRouter: Route[] = [
   {
     path: '/',
@@ -23,7 +25,11 @@ const prneRouter: Route[] = [
     element: async () => import('../pages/Abouts').then(res => <res.default />),
     pendingElement: <Pendding />
   },
+  {
+    path: '/todo',
+    element: async () => import('../pages/Todo').then(res => <res.default />),
+    pendingElement: <Pendding />
+  },
 ];
 
-
-export const routes = productionRegister(addProductRouters('products', prneRouter));
+export const routes = addProductRouters('products', prneRouter);

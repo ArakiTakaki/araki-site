@@ -2,7 +2,7 @@
   "name": "mysite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "/saihate/",
   "dependencies": {
     "@takumus/cubic-bezier": "^2.0.0",
     "@tanstack/react-location": "^3.7.4",

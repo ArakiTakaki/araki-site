@@ -1,5 +1,5 @@
 import { Route } from '@tanstack/react-location';
-import { createElement, FC, ReactNode } from 'react';
+import { createElement, FC } from 'react';
 import Pendding from '../pages/Pendding';
 
 const provide = async (component: FC) => {
