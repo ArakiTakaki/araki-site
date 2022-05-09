@@ -97,8 +97,6 @@ const circle = (p: p5) => {
         p.background(0, 50);
     }
 
-    function afterTick() {
-    }
     function initialize() {
         p.resizeCanvas(p.windowWidth, p.windowHeight);
         p.background(0, 255);
@@ -109,7 +107,6 @@ const circle = (p: p5) => {
     p.draw = () => {
         beforeTick();
         draw();
-        afterTick();
     };
 };
 

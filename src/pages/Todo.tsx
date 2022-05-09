@@ -20,8 +20,8 @@ const TodoPage: FC = () => {
                     <h3 className=' text-2xl'>未着手</h3>
                     <ul>
                         {
-                            TODO_LIST.map(val => (
-                                <li className="flex my-4">
+                            TODO_LIST.map((val, index) => (
+                                <li className="flex my-4" key={index}>
                                     <input type="checkbox" checked={val.checked} className="checkbox checkbox-accent" />
                                     <p className="ml-4">{val.name}</p>
                                 </li>
@@ -33,8 +33,8 @@ const TodoPage: FC = () => {
                     <h3 className=' text-2xl'>着手中</h3>
                     <ul>
                         {
-                            TODO_LIST.map(val => (
-                                <li className="flex my-4">
+                            TODO_LIST.map((val, index) => (
+                                <li className="flex my-4" key={index}>
                                     <input type="checkbox" checked={val.checked} className="checkbox checkbox-accent" />
                                     <p className="ml-4">{val.name}</p>
                                 </li>
@@ -46,8 +46,8 @@ const TodoPage: FC = () => {
                     <h3 className=' text-2xl'>完成</h3>
                     <ul>
                         {
-                            TODO_LIST.map(val => (
-                                <li className="flex my-4">
+                            TODO_LIST.map((val, index) => (
+                                <li className="flex my-4" key={index}>
                                     <input type="checkbox" checked={val.checked} className="checkbox checkbox-accent" />
                                     <p className="ml-4">{val.name}</p>
                                 </li>

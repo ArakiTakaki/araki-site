@@ -1,10 +1,10 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Link } from '@tanstack/react-location';
 import { getUrl } from '../../utils/site';
 import { NAVIGATION } from './constants';
 import { BaseIcon } from './BaseIcon';
 
-export const Navigation: FC<{ className?: string }> = ({ className }) => {
+export const Navigation: FC = () => {
     return (
         <nav>
             <ul className='menu p-4 bg-base-100'>

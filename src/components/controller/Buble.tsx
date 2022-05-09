@@ -192,7 +192,7 @@ export const Buble: FC = () => {
         return lookatPosition;
     }, []);
 
-    useRequestAnimationFrame((time, deltaTime) => {
+    useRequestAnimationFrame((time) => {
         camera.lookAt(look);
         updateUniformTime(time);
         updateUniformTime2(time);

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export const useInterval = (cb: Function, time: number) => {
+export const useInterval = (cb: () => void, time: number) => {
     const refCb = useRef(cb);
     useEffect(() => {
         refCb.current = cb;

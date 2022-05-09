@@ -21,7 +21,7 @@ export const Starts: FC<{
     map = getGenerateCircle(),
     color,
     backgroundColor,
-    onAnimate = () => {},
+    onAnimate,
     blending = THREE.AdditiveBlending
 }) => {
     
@@ -95,7 +95,7 @@ export const Starts: FC<{
             camera.position.x = Math.sin(time / 6000.0) * 300;
             camera.position.z = Math.cos(time / 6000.0) * 300;
 
-            onAnimate(time);
+            onAnimate && onAnimate(time);
             // TODO easing式の展開
             if (ease <= 1) {
                 for (let i = 0; i < refPrevValue.current.length; i++ ) {

@@ -113,8 +113,9 @@ export const between = (min: number, max: number, a: number, offset = 0): boolea
 // callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any
 
 type MapFunction<T, U> = (value: T, index: number, array: T[]) => U;
+
 /**
- * map関数をIndexによる分割をし、順次実行する。（例　x y z ごとのポジションを変更する）
+ * map関数をIndexによる分割をし、順次実行する。（例 x y z ごとのポジションを変更する）
  */
 export const editSplitArrayMap = <T, U>(...functions: MapFunction<T, U>[]) => (value: T, index: number, array: T[]) => {
     return functions[index % functions.length](value, Math.floor(index / functions.length), array);

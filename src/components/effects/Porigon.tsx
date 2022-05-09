@@ -3,7 +3,7 @@ import { useThreeContext } from '../ThreeContext';
 import * as THREE from 'three';
 import { useAddObject } from '../../uses/useAddObject';
 
-export const Porigon: FC<{}> = () => {
+export const Porigon: FC = () => {
     const { scene } = useThreeContext();
     const geometry = useMemo(() => new THREE.DodecahedronGeometry(30, 3), []);
     const material = useMemo(() => new THREE.MeshStandardMaterial({

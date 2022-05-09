@@ -107,7 +107,7 @@ export const Shader1: FC = () => {
         return lookatPosition;
     }, []);
 
-    useRequestAnimationFrame((time, deltaTime) => {
+    useRequestAnimationFrame((time) => {
         camera.lookAt(look);
         updateUniformTime(time);
         render();

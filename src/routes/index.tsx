@@ -1,5 +1,4 @@
-import React from 'react';
-import { Route, ReactLocation, Link, createHashHistory } from '@tanstack/react-location';
+import { Route, ReactLocation, createHashHistory } from '@tanstack/react-location';
 import Pendding from '../pages/Pendding';
 import { addProductRouters } from './productRouters';
 
