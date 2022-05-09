@@ -74,4 +74,4 @@ function useSize() {
     }, [resize]);
 
     return size;
-};
+}

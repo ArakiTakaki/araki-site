@@ -11,7 +11,7 @@ class MatrixText {
     private ctx: p5;
     private textLength = 10;
     private texts = range(10).map(() => '');
-    private size: number = 35;
+    private size = 35;
     private y: number;
     private x: number;
 
@@ -102,7 +102,7 @@ const circle = (p: p5) => {
     function initialize() {
         p.resizeCanvas(p.windowWidth, p.windowHeight);
         p.background(0, 255);
-    };
+    }
 
     p.setup = initialize;
     p.windowResized = initialize;

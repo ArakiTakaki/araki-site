@@ -56,7 +56,7 @@ function calcEps(a: number, inv: number) {
  */
 export const mix = (t1: number, t2: number, a: number) => t1 * (1 - a) + t2 * a;
 
-export const randomXorShift = (seed: number = 88675123) => {
+export const randomXorShift = (seed = 88675123) => {
     let w = seed;
     let x = 123456789;
     let y = 362436069;
@@ -108,7 +108,7 @@ export const minMax = (x: number, range1: number, range2: number): number =>
  * @param offset 外部許可
  * @returns
  */
-export const between = (min: number, max: number, a: number, offset: number = 0): boolean => a >= min - offset && a <= max + offset;
+export const between = (min: number, max: number, a: number, offset = 0): boolean => a >= min - offset && a <= max + offset;
 
 // callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any
 

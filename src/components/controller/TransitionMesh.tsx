@@ -36,7 +36,7 @@ function createRandomVerticies(len: number): number[]{
         vertices.push(x, y, z);
     }
     return vertices;
-};
+}
 
 function createHourglassVerticies(len: number): number[] {
     const vertices = [];
@@ -52,7 +52,7 @@ function createHourglassVerticies(len: number): number[] {
         vertices.push(x, y, z);
     }
     return vertices;
-};
+}
 
 function createCircleVerticies(len: number): number[] {
     const vertices = [];
@@ -68,7 +68,7 @@ function createCircleVerticies(len: number): number[] {
         vertices.push(x, y, z);
     }
     return vertices;
-};
+}
 
 function createExample1(len: number): number[]{
     const vertices = [];
@@ -84,4 +84,4 @@ function createExample1(len: number): number[]{
         vertices.push(x, y, z);
     }
     return vertices;
-};
+}

@@ -96,7 +96,7 @@ export const reactionDeffusion = (width: number, height: number) => {
 
   initalize();
 
-  return (deltaTime: number = 3) => {
+  return (deltaTime = 3) => {
     const [newU, newV] = update(u, v, deltaTime);
     u = newU;
     v = newV;

@@ -36,9 +36,9 @@ export const Earth: FC = () => {
             const vias = 200;
             const scale = 0.09;
             for (let i = 0; i < value.length; i += 3 ) {
-                let x = value[i];
-                let y = value[i + 1] + 3.0;
-                let z = value[i + 2];
+                const x = value[i];
+                const y = value[i + 1] + 3.0;
+                const z = value[i + 2];
 
                 const noise = curlNoise([
                     x / vias,
@@ -100,4 +100,4 @@ function createRandomVerticies(len: number): number[]{
         vertices.push(x, y, z);
     }
     return vertices;
-};
+}
