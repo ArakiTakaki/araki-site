@@ -37,3 +37,10 @@ img {
   height: 200px;
   object-fit: cover;
 }
+
+.pc-only {
+  @apply hidden md:block;
+}
+.sp-only {
+  @apply md:hidden;
+}

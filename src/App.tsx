@@ -9,7 +9,7 @@ function App() {
       <DefaultLayout.Provider 
         navigation={(
           <DefaultLayout.Navigation>
-            <Navigation className='px-4 py-2 sticky' />
+            <Navigation />
           </DefaultLayout.Navigation>
         )}
         content={

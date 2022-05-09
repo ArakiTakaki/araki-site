@@ -4,6 +4,8 @@ const AboutPage: FC = () => {
     return (
         <div>
             about
+            <div className="hidden sm:block">pc</div>
+            <div className="sm:hidden">sp</div>
         </div>
     );
 };
