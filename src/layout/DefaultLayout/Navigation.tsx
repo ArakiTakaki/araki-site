@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-location";
 import clsx from "clsx";
 import { MouseEventHandler, useCallback, useState } from "react";
 import { BaseIcon } from "../../components/common/BaseIcon";
+import { TITLE } from "../../constants/page";
 import { getUrl } from "../../utils/site";
 
 export const DefaultNavigation = ({ children }: { children: JSX.Element }): JSX.Element => {
@@ -25,7 +26,7 @@ export const DefaultNavigation = ({ children }: { children: JSX.Element }): JSX.
                         <BaseIcon className="swap-off fill-current" name="HAMBURGER" />
                         <BaseIcon className="swap-on fill-current" name="CLOSE" />
                     </label>
-                    <Link className="btn btn-ghost normal-case text-xl" to={getUrl('/')}>Saihate</Link>
+                    <Link className="btn btn-ghost normal-case text-xl" to={getUrl('/')}>{TITLE}</Link>
                 </div>
 
                 <div className={isOpenClass}>
@@ -35,9 +36,9 @@ export const DefaultNavigation = ({ children }: { children: JSX.Element }): JSX.
 
             <nav className='pc-only w-80 flex-none z-10 sticky left-0 top-0 bg-base-100'>
                 <div className='flex top-0 items-center px-4 py-2 sticky'>
-                    <p className='text-3xl'>
+                    <p className='text-2xl'>
                         <Link to={getUrl('/')}>
-                            SAIHATE
+                            {TITLE}
                         </Link>
                     </p>
                     <p className='text-xs ml-4'>v1.0.0</p>

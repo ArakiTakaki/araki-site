@@ -4,6 +4,7 @@ interface RoutingComponent {
     icon?: string;
     path: string[];
     text: string;
+    colorClass?: string;
 }
 
 interface DividerComponent {

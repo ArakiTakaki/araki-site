@@ -1,9 +1,9 @@
 import { NavigationItem } from "./interfaces";
 
 export const NAVIGATION: NavigationItem[] = [
-    { name: 'item', path: ['/'], text: 'TOP', icon: 'HOME' },
-    { name: 'item', path: ['about'], text: 'ABOUT', icon: 'INFORMATION' },
-    { name: 'item', path: ['todo'], text: 'TODO', icon: 'CHECK' },
+    { name: 'item', path: ['/'], text: 'TOP', icon: 'HOME', colorClass: 'fill-secondary-content' },
+    { name: 'item', path: ['about'], text: 'ABOUT', icon: 'INFORMATION', colorClass: 'fill-secondary-content' },
+    { name: 'item', path: ['todo'], text: 'TODO', icon: 'CHECK', colorClass: 'stroke-secondary-content'  },
     { name: 'divider' },
     { name: 'header', text: '3D' },
     { name: 'item', path: ['products', '1'], text: '秩序を持つ玉' },

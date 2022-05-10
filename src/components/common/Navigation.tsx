@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-location';
 import { getUrl } from '../../utils/site';
 import { NAVIGATION } from './constants';
 import { BaseIcon } from './BaseIcon';
+import clsx from 'clsx';
 
 export const Navigation: FC = () => {
     return (
@@ -16,10 +17,11 @@ export const Navigation: FC = () => {
                                 <span>{value.text}</span>
                             </li>
                         );
+                        
                         return (
                             <li key={index}>
                                 <Link to={getUrl(...value.path)}>
-                                    {value.icon && <BaseIcon name={value.icon} />}
+                                    {value.icon && <BaseIcon name={value.icon} className={clsx('w-6 h-6', value.colorClass)} />}
                                     <span>
                                         {value.text}
                                     </span>
