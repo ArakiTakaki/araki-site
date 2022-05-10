@@ -9,15 +9,15 @@ const provide = async (component: FC) => {
 };
 
 const productRouter = [
-    () => import('../components/controller/TransitionPointsController').then((value) => provide(value.TransitionPointsController)),
-    () => import('../components/controller/Earth').then(props => provide(props.Earth)),
-    () => import('../components/controller/MatrixMovie').then(props => createElement(props.MatrixMovie)),
-    () => import('../components/controller/SquareFly').then(res => provide(res.SquareFly)),
-    () => import('../components/controller/Buble').then(res => provide(res.Buble)),
-    () => import('../components/controller/Buble2').then(res => provide(res.Buble2)),
-    () => import('../components/controller/OutMaterial').then(res => provide(res.OutMaterial)),
-    () => import('../components/controller/Shader1').then(res => provide(res.Shader1)),
-    () => import('../components/controller/Shader2').then(res => provide(res.Shader2)),
+    () => import('../pages/products/TransitionPointsController').then((value) => provide(value.TransitionPointsController)),
+    () => import('../pages/products/Earth').then(props => provide(props.Earth)),
+    () => import('../pages/products/MatrixMovie').then(props => createElement(props.MatrixMovie)),
+    () => import('../pages/products/SquareFly').then(res => provide(res.SquareFly)),
+    () => import('../pages/products/Buble').then(res => provide(res.Buble)),
+    () => import('../pages/products/Buble2').then(res => provide(res.Buble2)),
+    () => import('../pages/products/OutMaterial').then(res => provide(res.OutMaterial)),
+    () => import('../pages/products/Shader1').then(res => provide(res.Shader1)),
+    () => import('../pages/products/Shader2').then(res => provide(res.Shader2)),
     () => import('../temp/ExampleCanvas').then(props => createElement(props.ExampleCanvas)),
 ];
 
